@@ -1,0 +1,80 @@
+/*NAVBAR STYLESHEET*/
+#navbar {
+  overflow: hidden;
+  /*background-color: #0b0b0e;*/
+  font-family:Roboto;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 27px 16px;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: 19px;
+  font-weight:bolder;
+  height: auto;
+}
+
+#navbar a:hover {
+  margin: 20px 3px;
+  padding: 7px 13px;
+  background-color: #de5d83;
+  color: white;
+  border-radius: 320px;
+}
+
+#navbar a.active {
+  margin: 20px 3px;
+  padding: 7px 13px;
+  background-color: #de5d83;
+  color: white;
+  border-radius: 320px;
+}
+
+#navbar span {
+  float: right;
+  display: block;
+  color: white;
+  text-align: center;
+  font-size: 19px;
+  margin: 20px 3px;
+  padding: 7px 13px;
+  background-color: #de5d83;
+  border-radius: 320px;
+}
+
+#navbar span.user {
+  background-color: dimgray;
+}
+
+#navbar span.reg {
+  background-color: darkgreen;
+}
+
+#navbar span.notreg {
+  background-color: crimson;
+}
+
+#navbar img{
+  float:left;
+  padding: 14px;
+}
+
+.content {
+  padding: 14px 16px;
+  height: auto;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #0b0b0e;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
