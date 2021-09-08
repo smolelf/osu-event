@@ -51,18 +51,18 @@ $row1 = mysqli_fetch_array($res1,MYSQLI_NUM);
 ?>
 <div id="navbar">
 	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Osu%21Logo_%282015%29.svg/1200px-Osu%21Logo_%282015%29.svg.png" style="width: 50px;height: 50px;" href="/osuevent" />
-  	<a class="active" href="../osu-event">Home</a>
-  	<a href="../osu-event/home">User Info</a>
+  	<a class="active" href="/osu-event">Home</a>
+  	<a href="home">User Info</a>
   	<?php if($level==1){ ?>
-  	<a href="../osu-event/reguser">Registered Users</a>
+  	<a href="reguser">Registered Users</a>
   	<?php }else{} ?>
-  	<a href="../osu-event/logout">Log Out</a>
+  	<a href="logout">Log Out</a>
   	<span>
 	Days Left to Tournament:
 	<?php
 		$remain = strtotime('2021-08-31 00:00:00') - time();
 		$day = floor($remain / 86400);
-		if($day){ 
+		if($day){
 			echo "$day Days ";
 		}
 	?>
@@ -79,8 +79,8 @@ $row1 = mysqli_fetch_array($res1,MYSQLI_NUM);
   		<?php }
   	?>
   	<span class="user">
-  	Welcome, 
-  	<?php 
+  	Welcome,
+  	<?php
   		echo $row[3]."!";
   	?>
   	</span>
@@ -88,15 +88,15 @@ $row1 = mysqli_fetch_array($res1,MYSQLI_NUM);
 <?php }else{ ?>
 <div id="navbar">
 	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Osu%21Logo_%282015%29.svg/1200px-Osu%21Logo_%282015%29.svg.png" style="width: 50px;height: 50px;">
-  	<a class="active" href="../osu-event">Home</a>
-  	<a href="../osu-event/sign-up">Sign-Up</a>
-  	<a href="../osu-event/sign-in">Sign-In</a>
+  	<a class="active" href="/osu-event">Home</a>
+  	<a href="sign-up">Sign-Up</a>
+  	<a href="sign-in">Sign-In</a>
   	<span>
 	Days Left to Tournament:
 	<?php
 		$remain = strtotime('2021-08-31 00:00:00') - time();
 		$day = floor($remain / 86400);
-		if($day){ 
+		if($day){
 			echo "$day Days ";
 		}
 	?>
@@ -177,7 +177,7 @@ function myFunction() {
 <script>
 $(document).ready(function(e) {
 	$('img[usemap]').rwdImageMaps();
-	
+
 	$('area').on('click', function() {
 		//alert($(this).attr('alt') + ' clicked');
 	});

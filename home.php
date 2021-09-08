@@ -37,7 +37,7 @@ if (isset($_GET['msg']))
 	echo "	<span class=\"noti\">".base64_decode(urldecode($_GET['msg']))."</span>
 	";
     echo "<script type=\"text/javascript\">
-    	
+
     	function noti() {
     		$(\"span.noti\").fadeIn(300).delay(4000).fadeOut(400);
     	}
@@ -62,7 +62,7 @@ if (isset($_GET['msg']))
 	<?php
 		$remain = strtotime('2021-08-31 00:00:00') - time();
 		$day = floor($remain / 86400);
-		if($day){ 
+		if($day){
 			echo "$day Days ";
 		}
 	?>
@@ -79,8 +79,8 @@ if (isset($_GET['msg']))
   		<?php }
   	?>
   	<span class="user">
-  	Welcome, 
-  	<?php 
+  	Welcome,
+  	<?php
   		echo $row[3]."!";
   	?>
   	</span>
@@ -88,52 +88,65 @@ if (isset($_GET['msg']))
 <div class="content" class="sticky">
 	<h1>osu! Malaysia Tournament 2021</h1>
 	<h4><?php echo $row[3]; ?>'s Information.</h4><br>
-		<form method="POST" action="reggame.php">
-   		<div class="segment userinfo">
+	<div class="segment userinfo">
+		<form method="POST" action="editprof.php">
    		<input type="text" name="id" value="<?php echo $row[0]; ?>" hidden />
-		<label>Username:
-    	<input type="text" name="username" value="<?php echo $row[1]; ?>" disabled />
+			<label>Username:
+    	<input type="text" name="username" value="<?php echo $row[1]; ?>" required />
   		</label>
   		<label>Password:
-    	<input type="text" name="password" value="<?php echo $row[2]; ?>" disabled />
+    	<input type="text" name="password" value="<?php echo $row[2]; ?>" required />
   		</label>
   		<label>Full Name:
-    	<input type="text" name="name" value="<?php echo $row[3]; ?>" disabled />
+    	<input type="text" name="name" value="<?php echo $row[3]; ?>" required />
   		</label>
   		<label>E-Mail:
-    	<input type="text" name="email" value="<?php echo $row[4]; ?>" disabled />
+    	<input type="text" name="email" value="<?php echo $row[4]; ?>" required />
   		</label>
       <span style=""><label style="margin-bottom: -10px">Gender:</label>
       <label class="radio" style="margin-bottom: -10px">
-      <input type="radio" name="gender" value="Male" <?php if($row[5]=="Male"){echo "checked";} ?> readonly disabled>
+      <input type="radio" name="gender" value="Male" <?php if($row[5]=="Male"){echo "checked";} ?> required />
       <span class="design"></span>
       <span class="text">Male</span>
       </label>
       <label class="radio">
-      <input type="radio" name="gender" value="Female" <?php if($row[5]=="Female"){echo "checked";} ?> readonly disabled>
+      <input type="radio" name="gender" value="Female" <?php if($row[5]=="Female"){echo "checked";} ?> required />
       <span class="design"></span>
       <span class="text">Female</span>
       </label>
       </span>
   		<label>Birth Date:
   		<?php
-  		$date=explode("-", $row[6]);
-  		$date=mktime(0,0,0,$date[1],$date[2],$date[0])
+  		//$date=explode("-", $row[6]);
+  		//$date=mktime(0,0,0,$date[1],$date[2],$date[0])
   		?>
-    	<input type="text" name="date" value="<?php echo date("d - F - Y",$date); ?>" disabled />
+    	<!--<input type="text" name="date" value="<?php //echo date("d - F - Y",$date); ?>" />-->
+			<input type="date" name="date" value="<?php echo $row[6]; ?>" max="2009-12-31" required />
   		</label>
   		<?php
-  		if(mysqli_num_rows($res1)==1){ 
+  		if(mysqli_num_rows($res1)==1){
   			$date1=explode("-", $row1[2]);
   			$date1=mktime(0,0,0,$date1[1],$date1[2],$date1[0])
   			?>
   			<label><button class="gray" type="submit" disabled><i class="icon ion-md-done-all"></i>&nbsp;&nbsp;Registered on <?php echo date("d F Y",$date1); ?></button></label>
+				</form>
   		<?php }else{ ?>
-  			<label><button class="green" type="submit"><i class="icon ion-md-checkmark"></i>&nbsp;&nbsp;Register for Tournament now!</button></label>
+				<label><button class="green" type="submit"><i class="icon ion-md-checkmark"></i>&nbsp;&nbsp;Update Profile</button></label>
+				</form>
+				<form method="POST" action="reggame.php">
+					<input type="text" name="id" value="<?php echo $row[0]; ?>" hidden />
+					<input type="text" name="username" value="<?php echo $row[1]; ?>" disabled hidden />
+					<input type="text" name="password" value="<?php echo $row[2]; ?>" disabled hidden />
+					<input type="text" name="name" value="<?php echo $row[3]; ?>" disabled hidden />
+					<input type="text" name="email" value="<?php echo $row[4]; ?>" disabled hidden />
+					<input type="radio" name="gender" value="Male" <?php if($row[5]=="Male"){echo "checked";} ?> readonly disabled hidden >
+					<input type="radio" name="gender" value="Female" <?php if($row[5]=="Female"){echo "checked";} ?> readonly disabled hidden >
+					<input type="text" name="date" value="<?php //echo date("d - F - Y",$date); ?>" disabled hidden />
+  				<label style="margin-top: -3em;"><button class="green" type="submit"><i class="icon ion-md-checkmark"></i>&nbsp;&nbsp;Register for Tournament now!</button></label>
+				</form>
   		<?php }
   		?>
 		</div>
-		</form>
 </div><br>
 
 <script>
