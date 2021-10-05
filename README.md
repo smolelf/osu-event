@@ -10,4 +10,4 @@ Web Programming Project Semester 2 2020/2021
 
 # Update v1.0.1
 
-Added "Update User Profile" for unregistered users.
+Added "Update User Profile" for "unregistered for games" users.
